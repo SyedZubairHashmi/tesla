@@ -1,6 +1,4 @@
 import React from "react";
-import MenuIcon from '@mui/icons-material/Menu'; // Import Menu icon from MUI
-import CloseIcon from '@mui/icons-material/Close'; // Import Close icon from MUI
 import styled from "styled-components";
 
 function Header() {
@@ -20,10 +18,16 @@ function Header() {
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Tesla Account</a>
-        <CustomMenu onClick={() => setBurgerStatus(true)} />
+        {/* Ensure FontAwesome is working */}
+        <i className="fa-solid fa-bars" onClick={() => setBurgerStatus(true)}></i>
       </RightMenu>
       <BurgerNav show={burgerStatus}>
-        <CustomClose onClick={() => setBurgerStatus(false)} />
+        {/* Correct inline styles */}
+        <i
+          className="fa-solid fa-xmark"
+          onClick={() => setBurgerStatus(false)}
+          style={{ textAlign: 'left', fontSize: '1.3rem' }}
+        ></i>
         <li><a href="#">Existing Inventory</a></li>
         <li><a href="#">Used Inventory</a></li>
         <li><a href="#">Trade-in</a></li>
@@ -77,10 +81,6 @@ const RightMenu = styled.div`
   }
 `;
 
-const CustomMenu = styled(MenuIcon)`
-  cursor: pointer;
-`;
-
 const BurgerNav = styled.div`
   position: fixed;
   top: 0;
@@ -100,15 +100,9 @@ const BurgerNav = styled.div`
   li {
     padding: 15px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
     a {
       font-weight: 600;
     }
   }
-`;
-
-const CustomClose = styled(CloseIcon)`
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
 `;
